@@ -39,6 +39,10 @@ def google_data():
     data_matrix = [[queries[i], traffic[i], links[i]] for i in range(len(queries))]
 
     df = pd.DataFrame(data_matrix, columns=columns)
+
+    if 'google_files' not in os.listdir():
+        os.mkdir('./google_files')
+    
     pickle.dump(df, open(f'./google_files/g_{date_id}{time_id}.pkl', 'wb'))
 
 

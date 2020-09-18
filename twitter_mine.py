@@ -87,6 +87,10 @@ def twitter_data():
     data_matrix = [[subjects[i], tweets[i], links[i]] for i in range(len(subjects))]
 
     df = pd.DataFrame(data_matrix, columns=columns)
+
+    if 'twitter_files' not in os.listdir():
+        os.mkdir('./twitter_files')
+    
     pickle.dump(df, open(f'./twitter_files/t_{date_id}{time_id}.pkl', 'wb'))
 
 

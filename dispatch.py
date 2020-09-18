@@ -26,9 +26,11 @@ def email():
     current_time = time.strftime('%H:%M:%S')
     current_date = time.strftime('%m-%d-%Y')
 
-    g = pickle.load(open(f'./g_{date_id}.pkl', 'rb'))
-    t = pickle.load(open(f'./t_{date_id}.pkl', 'rb'))
-    w = pickle.load(open(f'./w_{date_id}.pkl', 'rb'))
+    data = [f'g_{date_id}.pkl', f't_{date_id}.pkl', f'w_{date_id}.pkl']
+
+    g = pickle.load(open(data[0], 'rb'))
+    t = pickle.load(open(data[1], 'rb'))
+    w = pickle.load(open(data[2], 'rb'))
 
     # set up SMTP connection
     # [currently set up for gmail sender address]
@@ -169,7 +171,10 @@ def email():
                str(email));
 
     # archive composite dataframes from previous date
-    [shutil.move(i, f'./archive/{i}') for i in os.listdir() if i.startswith('g_') or i.startswith('t_') or i.startswith('w_')]
+    if 'archive' not in os.listdir():
+        os.mkdir('./archive')
+
+    [shutil.move(i, f'./archive/{i}') for i in os.listdir() if i in data]
 
 
 email()

@@ -122,6 +122,9 @@ def compile():
     pickle.dump(df, open(f'./g_{date_id}.pkl', 'wb'))
 
     # archive half-hourly dataframes from previous date
+    if 'archive' not in os.listdir('./google_files'):
+        os.mkdir('./google_files/archive')
+
     [shutil.move(f'./google_files/{i}', f'./google_files/archive/{i}') for i in os.listdir('./google_files') if i.startswith('g_')]
 
 

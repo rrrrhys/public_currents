@@ -128,6 +128,9 @@ def compile():
     pickle.dump(df, open(f'./t_{date_id}.pkl', 'wb'))
 
     # archive quarter-hourly dataframes from previous date
+    if 'archive' not in os.listdir('./twitter_files'):
+        os.mkdir('./twitter_files/archive')
+
     [shutil.move(f'./twitter_files/{i}', f'./twitter_files/archive/{i}') for i in os.listdir('./twitter_files') if i.startswith('t_')]
 
 
