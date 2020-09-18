@@ -35,6 +35,22 @@ def tweets_to_int(df):
     return df.sort_values('int_tweets', ascending=False).reset_index(drop=True)
 
 
+# avoid duplicate results due to capitalization, spacing + punctuation discrepancies
+punct = ['.', ',', '?', '!', ';', ':', '-', '(', ')', '[', ']', '{', '}', '"', "'"]
+
+def raw_subjects(df):
+    raw_subjects = []
+
+    for i in df['subjects']:
+        for p in punct:
+            if p in i:
+                i = i.replace(p, '')
+        raw_subjects.append(i.lower().replace(' ', ''))
+
+    df['raw_subjects'] = raw_subjects
+    return df
+
+
 # convert final tweet data to string format for email display
 # [uniform for all data sources]
 def format_results(df):
@@ -104,7 +120,8 @@ def compile():
     all_dfs = [tweets_to_int(df) for df in all_dfs]
     df = pd.concat(all_dfs)
 
-    df = df.groupby('subjects').agg(max)
+    df = raw_subjects(df)
+    df = df.groupby('raw_subjects').agg(max)
     df = df.sort_values('int_tweets', ascending=False).reset_index()
     df = format_results(df)
 

@@ -29,6 +29,22 @@ def traffic_to_int(df):
     return df.sort_values('int_traffic', ascending=False).reset_index(drop=True)
 
 
+# avoid duplicate results due to capitalization, spacing + punctuation discrepancies
+punct = ['.', ',', '?', '!', ';', ':', '-', '(', ')', '[', ']', '{', '}', '"', "'"]
+
+def raw_queries(df):
+    raw_queries = []
+
+    for i in df['queries']:
+        for p in punct:
+            if p in i:
+                i = i.replace(p, '')
+        raw_queries.append(i.lower().replace(' ', ''))
+
+    df['raw_queries'] = raw_queries
+    return df
+
+
 # convert final search traffic data to string format for email display
 # [uniform for all data sources]
 def format_results(df):
@@ -98,10 +114,8 @@ def compile():
     all_dfs = [traffic_to_int(df) for df in all_dfs]
     df = pd.concat(all_dfs)
 
-    # avoid duplicates due to capitalization discrepancies
-    df['lower_queries'] = df['queries'].map(str.lower)
-    df = df.groupby('lower_queries').agg(max)
-
+    df = raw_queries(df)
+    df = df.groupby('raw_queries').agg(max)
     df = df.sort_values('int_traffic', ascending=False).reset_index()
     df = format_results(df)
 
