@@ -12,7 +12,7 @@ ___
 
 <br/>
 
-the top ten google searches + twitter trends + wikipedia pageviews of the previous day with links to your inbox first thing every morning.
+the top ten google searches + twitter trends + wikipedia pageviews of the previous day [with links] to your inbox first thing every morning.
 
 </br>
 
