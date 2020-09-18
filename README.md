@@ -1,6 +1,6 @@
 <html>
   <p align="center">
-    <img src="https://github.com/rrrrhys/public_currents/blob/master/_/the_world.png" alt=""    width="150"/>
+    <img src="/_/the_world.png" alt=""    width="150"/>
   </p>
 ___
 </html>
@@ -26,8 +26,8 @@ clean, simple data.
     [preview]
     <br/>
     <br/>
-    <img src="https://github.com/rrrrhys/public_currents/blob/master/_/google.png" alt="" width="600"/>
-    <img src="https://github.com/rrrrhys/public_currents/blob/master/_/twitter.png" alt="" width="600"/>
-    <img src="https://github.com/rrrrhys/public_currents/blob/master/_/wikipedia.png" alt="" width="600"/>
+    <img src="/_/google.png" alt="" width="600"/>
+    <img src="/_/twitter.png" alt="" width="600"/>
+    <img src="/_/wikipedia.png" alt="" width="600"/>
    </p>
   </html>
