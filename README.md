@@ -1,6 +1,6 @@
 <html>
   <p align="center">
-    <img src="https://github.com/rrrrhys/public_currents/blob/master/_/the_world.png" alt=""    width="200"/>
+    <img src="https://github.com/rrrrhys/public_currents/blob/master/_/the_world.png" alt=""    width="150"/>
   </p>
 ___
 </html>
@@ -14,8 +14,7 @@ ___
 
 the top ten google searches + twitter trends + wikipedia pageviews of the previous day with links to your inbox first thing every morning.
 
-<br/>
-<br/>
+</br>
 
 clean, simple data.
 
